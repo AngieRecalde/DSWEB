@@ -1,0 +1,9 @@
+#EJEMPLO N°1
+
+from flask import Flask
+app = Flask(__name__)
+@app.route('/')
+def index():
+ return '<h1>Angie Tatiana Recalde Monzon!</h1>'
+if __name__ == '__main__':
+ app.run(debug=True)
