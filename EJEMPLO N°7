@@ -1,0 +1,24 @@
+from flask import abort,Flask
+class User:
+    def __init__(self, name):
+        self.name = name
+
+# Simulación de carga de usuario
+def load_user(id):
+    if id == '1':
+        return User('Angie')
+    else:
+        return None
+app = Flask(__name__)
+@app.route('/')
+def index():
+ return '<h1>HOLA A TODOS LOS VISITANTES</h1>'
+
+@app.route('/user/<id>')
+def get_user(id):
+ user = load_user(id)
+ if not user:
+  abort(404)
+ return '<h1>HOLA, %s</h1>' % user.name
+if __name__ == '__main__':
+ app.run(debug=True)
